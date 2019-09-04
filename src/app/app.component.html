@@ -1,0 +1,67 @@
+<div class ="container">
+<h1>{{title}}</h1>
+
+<p class="text-info">This Angular app is created by {{name}}
+
+</p>
+<div class="row">
+  <div class ="col-md-2">Filter By: </div>
+  <div class="col-md-6"><input [(ngModel)]='searchText' type="text" class="form-control"/></div>
+
+
+</div>
+<div class="row">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <th>
+        <button class="btn btn-info" (click)='toggleImage()'>{{showImage ? 'Hide' : 'Show'}}Image
+          </button>
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Code
+        </th>
+        <th>
+         Price
+        </th>
+        <th>
+         Rating
+         </th>
+         <th>
+           Release Date
+          </th>
+      </thead>
+    
+    <tbody>
+      <tr *ngFor="let p of products | productfilter:searchText">
+      <td>
+      <img *ngIf="showImage" [src]="p.imageUrl"
+      [style.width.px]='imageWidth'
+      [style.Margin.px]='imageMargin'>
+      
+      </td>
+       <td>
+       {{p.productName}}
+       </td>
+       <td>
+        {{p.productCode}}
+        </td>
+        <td>
+        {{p.price}}
+        </td>
+        <td>
+        {{p.starRating}}
+      </td>
+      <td>
+       {{p.releaseDate}}
+      </td>
+      </tr>
+    </tbody>
+    </table>
+    
+  </div>
+</div>
+</div>
